@@ -4,19 +4,21 @@
   "private": true,
   "dependencies": {
     "@tableau/tableau-ui": "^2.2.1",
-    "react": "^16.9.0",
-    "react-app-polyfill": "^1.0.2",
-    "react-color": "^2.17.3",
-    "react-countdown-clock": "^2.6.0",
-    "react-dom": "^16.9.0",
-    "react-ga": "^2.6.0",
-    "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1"
+    "react": "^16.12.0",
+    "react-app-polyfill": "^1.0.5",
+    "react-app-rewire-multiple-entry": "^2.1.0",
+    "react-app-rewired": "^2.1.5",
+    "react-color": "^2.18.0",
+    "react-countdown-clock": "^2.7.0",
+    "react-dom": "^16.12.0",
+    "react-ga": "^2.7.0",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "^3.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
