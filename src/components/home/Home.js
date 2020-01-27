@@ -6,6 +6,10 @@ import Counter from "./Counter";
 // Declare this so our linter knows that tableau is a global object
 /* global tableau */
 
+const baseURL = window.location.origin.includes("localhost:3000")
+  ? window.location.origin
+  : ".";
+
 function Home(props) {
   // create some state
   const [counter, setCounter] = useState({
@@ -27,28 +31,47 @@ function Home(props) {
   useEffect(() => {
     tableau.extensions.initializeAsync({ configure: configure }).then(() => {
       console.log("[Home.js] Opening...");
-      console.log(`[Home.js] checked data source list:`, checkedDataSourcesList());
+      console.log(
+        `[Home.js] checked data source list:`,
+        checkedDataSourcesList()
+      );
 
       //checking if toggle is on or off
-      let selectedUpdateToggle = tableau.extensions.settings.get("updateToggle");
+      let selectedUpdateToggle = tableau.extensions.settings.get(
+        "updateToggle"
+      );
       //this is list of data sources
-      let selectedDataSources = tableau.extensions.settings.get("dataSourceList");
+      let selectedDataSources = tableau.extensions.settings.get(
+        "dataSourceList"
+      );
       //this is the actually value
       let selectedStepperValue = tableau.extensions.settings.get("timeRefresh");
       // minutes or seconds
-      let selectedIntervalValue = tableau.extensions.settings.get("intervalValue");
+      let selectedIntervalValue = tableau.extensions.settings.get(
+        "intervalValue"
+      );
       // find the colour from the workbook settings
       let selectedTimerColour = tableau.extensions.settings.get("timerColour");
 
       if (selectedUpdateToggle && selectedUpdateToggle !== null) {
         props.updateHandler(JSON.parse(selectedUpdateToggle));
         if (selectedDataSources && selectedDataSources !== null) {
-          console.log(`[Home.js] ${JSON.parse(selectedDataSources).length} datasources found`);
           console.log(
-            `[Home.js] Every ${JSON.parse(selectedStepperValue)} ${JSON.parse(selectedIntervalValue)} going to refresh`
+            `[Home.js] ${
+              JSON.parse(selectedDataSources).length
+            } datasources found`
           );
-          console.log(`[Home.js] Received Colour ${JSON.parse(selectedTimerColour)}`);
-          let minsOrSecs = JSON.parse(selectedIntervalValue) ? JSON.parse(selectedIntervalValue) : "Seconds";
+          console.log(
+            `[Home.js] Every ${JSON.parse(selectedStepperValue)} ${JSON.parse(
+              selectedIntervalValue
+            )} going to refresh`
+          );
+          console.log(
+            `[Home.js] Received Colour ${JSON.parse(selectedTimerColour)}`
+          );
+          let minsOrSecs = JSON.parse(selectedIntervalValue)
+            ? JSON.parse(selectedIntervalValue)
+            : "Seconds";
           setPaused(JSON.parse(selectedUpdateToggle) ? false : true);
           setCounter(currentState => ({
             ...currentState,
@@ -68,7 +91,7 @@ function Home(props) {
 
   function configure() {
     let payload = "";
-    const popupUrl = `${window.location.origin}/configure`;
+    const popupUrl = `${baseURL}/configure.html`;
     tableau.extensions.ui
       .displayDialogAsync(popupUrl, payload, { height: 540, width: 400 })
       .then(closePayload => {
@@ -148,7 +171,9 @@ function Home(props) {
     console.log("[Home.js] refreshing settings", props);
     let selectedStepperValue = tableau.extensions.settings.get("timeRefresh");
     let selectedUpdateToggle = tableau.extensions.settings.get("updateToggle");
-    let selectedIntervalValue = tableau.extensions.settings.get("intervalValue");
+    let selectedIntervalValue = tableau.extensions.settings.get(
+      "intervalValue"
+    );
     let selectedTimerColour = tableau.extensions.settings.get("timerColour");
 
     // this sets the pause setting on the timer component
@@ -159,7 +184,10 @@ function Home(props) {
     if (selectedUpdateToggle && selectedIntervalValue && selectedStepperValue) {
       setCounter(currentState => ({
         ...currentState,
-        seconds: intervalTime(JSON.parse(selectedIntervalValue), JSON.parse(selectedStepperValue)),
+        seconds: intervalTime(
+          JSON.parse(selectedIntervalValue),
+          JSON.parse(selectedStepperValue)
+        ),
         color: JSON.parse(selectedTimerColour)
       }));
     }
@@ -177,7 +205,12 @@ function Home(props) {
 
   return (
     <>
-      <Counter state={counter} stateHandler={newState} paused={paused} clickHandler={handleOnClick} />
+      <Counter
+        state={counter}
+        stateHandler={newState}
+        paused={paused}
+        clickHandler={handleOnClick}
+      />
     </>
   );
 }

@@ -27,43 +27,66 @@ function Configure(props) {
 
     tableau.extensions.initializeDialogAsync().then(openPayload => {
       // check if settings still persist
-      let selectedUpdateToggle = tableau.extensions.settings.get("updateToggle");
-      let selectedDataSources = tableau.extensions.settings.get("dataSourceList");
+      let selectedUpdateToggle = tableau.extensions.settings.get(
+        "updateToggle"
+      );
+      let selectedDataSources = tableau.extensions.settings.get(
+        "dataSourceList"
+      );
       let selectedStepperValue = tableau.extensions.settings.get("timeRefresh");
-      let selectedIntervalValue = tableau.extensions.settings.get("intervalValue");
+      let selectedIntervalValue = tableau.extensions.settings.get(
+        "intervalValue"
+      );
       let selectedTimerColour = tableau.extensions.settings.get("timerColour");
-      let selectedColourPicker = tableau.extensions.settings.get("updateColourPicker");
+      let selectedColourPicker = tableau.extensions.settings.get(
+        "updateColourPicker"
+      );
 
       if (selectedUpdateToggle && selectedUpdateToggle !== null) {
-        console.log("[Configure.js] Got toggle data from wb", selectedUpdateToggle);
+        console.log(
+          "[Configure.js] Got toggle data from wb",
+          selectedUpdateToggle
+        );
         props.updateHandler(JSON.parse(selectedUpdateToggle));
       } else {
-        props.updateHandler(false);
+        // props.updateHandler(false);
       }
 
       if (selectedStepperValue && selectedStepperValue !== null) {
-        console.log("[Configure.js] Got stepper data from wb: ", selectedStepperValue);
+        console.log(
+          "[Configure.js] Got stepper data from wb: ",
+          selectedStepperValue
+        );
         setStepperValue(JSON.parse(selectedStepperValue));
       } else {
         setStepperValue(30);
       }
 
       if (selectedIntervalValue && selectedIntervalValue !== null) {
-        console.log("[Configure.js] Got timeInterval data from wb: ", selectedIntervalValue);
+        console.log(
+          "[Configure.js] Got timeInterval data from wb: ",
+          selectedIntervalValue
+        );
         setIntervalValue(JSON.parse(selectedIntervalValue));
       } else {
         setIntervalValue("Seconds");
       }
 
       if (selectedTimerColour && selectedTimerColour !== null) {
-        console.log("[Configure.js] Got background colour from wb: ", selectedTimerColour);
+        console.log(
+          "[Configure.js] Got background colour from wb: ",
+          selectedTimerColour
+        );
         setBackground(JSON.parse(selectedTimerColour));
       } else {
         setBackground("#000");
       }
 
       if (selectedColourPicker && selectedColourPicker !== null) {
-        console.log("[Configure.js] Got colour picker info from wb: ", selectedColourPicker);
+        console.log(
+          "[Configure.js] Got colour picker info from wb: ",
+          selectedColourPicker
+        );
         setTogglePicker(JSON.parse(selectedColourPicker));
       } else {
         setTogglePicker(false);
@@ -88,7 +111,10 @@ function Configure(props) {
 
   function toggle(id) {
     let checkChange = !datasource[id].checked;
-    let changeDatasourceCheck = { data: datasource[id].data, checked: checkChange };
+    let changeDatasourceCheck = {
+      data: datasource[id].data,
+      checked: checkChange
+    };
     const updatedDatasource = [...datasource];
     updatedDatasource[id] = changeDatasourceCheck;
     setDatasource(updatedDatasource);
@@ -108,7 +134,8 @@ function Configure(props) {
       return dsource.checked;
     });
     console.log(checkDataSourcesList.length);
-    let countDataSources = checkDataSourcesList.length > 0 ? checkDataSourcesList.length : 0;
+    let countDataSources =
+      checkDataSourcesList.length > 0 ? checkDataSourcesList.length : 0;
     if (countDataSources === 0 && !props.on) {
       return <p>You are not refreshing any datasource</p>;
     } else if (!props.on) {
@@ -117,8 +144,12 @@ function Configure(props) {
       return (
         <p>
           You are refreshing{" "}
-          {countDataSources === 1 ? <span>1 datasource</span> : <span>{countDataSources} datasources</span>}, every{" "}
-          {stepperValue} {intervalValue}
+          {countDataSources === 1 ? (
+            <span>1 datasource</span>
+          ) : (
+            <span>{countDataSources} datasources</span>
+          )}
+          , every {stepperValue} {intervalValue}
         </p>
       );
     } else {
@@ -160,14 +191,27 @@ function Configure(props) {
       return dsource.checked;
     });
 
-    let refreshOnOff = newList.length === 0 ? JSON.stringify(false) : JSON.stringify(props.on);
+    let refreshOnOff =
+      newList.length === 0 ? JSON.stringify(false) : JSON.stringify(props.on);
 
-    tableau.extensions.settings.set("dataSourceList", JSON.stringify(dataSourceList));
-    tableau.extensions.settings.set("timeRefresh", JSON.stringify(stepperValue));
-    tableau.extensions.settings.set("intervalValue", JSON.stringify(intervalValue));
+    tableau.extensions.settings.set(
+      "dataSourceList",
+      JSON.stringify(dataSourceList)
+    );
+    tableau.extensions.settings.set(
+      "timeRefresh",
+      JSON.stringify(stepperValue)
+    );
+    tableau.extensions.settings.set(
+      "intervalValue",
+      JSON.stringify(intervalValue)
+    );
     tableau.extensions.settings.set("updateToggle", refreshOnOff);
     tableau.extensions.settings.set("timerColour", JSON.stringify(background));
-    tableau.extensions.settings.set("updateColourPicker", JSON.stringify(togglePicker));
+    tableau.extensions.settings.set(
+      "updateColourPicker",
+      JSON.stringify(togglePicker)
+    );
 
     tableau.extensions.settings.saveAsync().then(() => {
       console.log("[Configure.js] Saved settings!");
@@ -212,7 +256,15 @@ function Configure(props) {
         </div>
       ) : (
         <div className="main">
-          <h4>Select {datasource.length === 1 ? <span>Datasource</span> : <span>Datasources</span>} to refresh</h4>
+          <h4>
+            Select{" "}
+            {datasource.length === 1 ? (
+              <span>Datasource</span>
+            ) : (
+              <span>Datasources</span>
+            )}{" "}
+            to refresh
+          </h4>
           <Datasources datasources={datasource} toggleHandler={toggle} />
           <h4>Select Refresh Time</h4>
           <StepperInput
