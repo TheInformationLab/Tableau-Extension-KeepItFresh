@@ -2,8 +2,8 @@
   "name": "keep-it-fresh-react",
   "version": "0.2.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
-    "@pangaeatech/react-app-rewire-multiple-entry": "^1.0.2",
     "@tableau/tableau-ui": "^2.2.1",
     "react": "^16.12.0",
     "react-app-polyfill": "^1.0.5",

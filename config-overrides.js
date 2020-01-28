@@ -16,8 +16,4 @@ module.exports = {
     multipleEntry.addMultiEntry(config);
     return config;
   }
-  //   devServer: function(configFunction) {
-  //     multipleEntry.addEntryProxy(configFunction);
-  //     return configFunction;
-  //   }
 };

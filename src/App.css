@@ -1,6 +1,15 @@
+@font-face {
+  font-family: PT Sans;
+  src: url("./fonts/PTSans-Regular.ttf") format("truetype");
+}
+
 .App {
   padding: 0;
   margin: 0;
+  font-family: PT Sans, sans-serif, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .main {
