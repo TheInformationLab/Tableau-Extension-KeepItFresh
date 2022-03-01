@@ -1,3 +1,13 @@
+<div align="center">
+<img src="https://img.shields.io/github/license/TheInformationLab/Tableau-Extension-KeepItFresh" />
+<img src="https://img.shields.io/github/languages/top/TheInformationLab/Tableau-Extension-KeepItFresh" />
+</div>
+<div align="center">
+<img src="https://img.shields.io/github/package-json/dependency-version/TheInformationLab/Tableau-Extension-KeepItFresh/react?filename=package.json" />
+<img src="https://img.shields.io/github/package-json/dependency-version/TheInformationLab/Tableau-Extension-KeepItFresh/@tableau/tableau-ui?filename=package.json" />
+<img src="https://img.shields.io/github/package-json/dependency-version/TheInformationLab/Tableau-Extension-KeepItFresh/react-router-dom?filename=package.json" />
+</div>
+
 # Tableau-Extension-KeepItFresh
 
 Author: [Andre de Vries](https://github.com/andre347)
