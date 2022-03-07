@@ -125,11 +125,13 @@ function Home(props) {
           }
         });
       });
+      // eslint-disable-next-line
       checkedDataSourcesList().map((item) => {
         for (let dataSourceId in dashboardDataSources) {
           let name = item.data.name;
           const dataSource = dashboardDataSources[dataSourceId];
           if (dataSource.name === name) {
+            // eslint-disable-next-line
             dataSource.refreshAsync().then(() => {
               console.log("[Home.js] Refreshed ", dataSource);
             });
