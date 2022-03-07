@@ -24,4 +24,4 @@ This extension is now also available as a Docker image.
 
 ### Quick start
 
-[![Deploy to Render](http://render.com/images/deploy-to-render-button.svg)](https://dashboard.render.com/iac/new?repoOwner=TheInformationLab&repoName=Tableau-Extension-KeepItFresh&branch=master&provider=GITHUB)
+[![Deploy to Render](http://render.com/images/deploy-to-render-button.svg)](https://dashboard.render.com/iac/new?repoOwner=TheInformationLab&repoName=Tableau-Extension-KeepItFresh&branch=docker-integration&provider=GITHUB)
