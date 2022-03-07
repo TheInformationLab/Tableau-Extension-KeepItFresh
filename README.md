@@ -24,4 +24,14 @@ This extension is now also available as a Docker image.
 
 ### Quick start
 
-[![Deploy to Render](http://render.com/images/deploy-to-render-button.svg)](https://dashboard.render.com/iac/new?repoOwner=TheInformationLab&repoName=Tableau-Extension-KeepItFresh&branch=docker-integration&provider=GITHUB)
+#### Deploy to Heroku
+
+1. One click deploy to Heroku
+   [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/TheInformationLab/Tableau-Extension-KeepItFresh)
+
+1. Note if you don't have an account, you'll be prompted to signup for Heroku. It's free to deploy this Tableau extension.
+
+#### Deploy to Render
+
+Clone the repository, and then use the deploy button
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy)

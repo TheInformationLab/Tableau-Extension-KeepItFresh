@@ -1,0 +1,8 @@
+{
+  "name": "Tableau Extension Keep It Fresh",
+  "description": "Refresh your Tableau dashboard and data sources on a user defined timer",
+  "website": "https://theinformationlab.co.uk",
+  "repository": "https://github.com/TheInformationLab/Tableau-Extension-KeepItFresh",
+  "logo": "https://avatars.githubusercontent.com/u/8116306?s=200&v=4",
+  "stack": "container"
+}
