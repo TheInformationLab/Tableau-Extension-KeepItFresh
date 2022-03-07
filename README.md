@@ -20,7 +20,7 @@ This extension is of course free to download and use.
 
 ## Update 7th of March 2022
 
-This extension is now also available as a Docker image.
+This extension is now also available as a Docker image. I have also created quick starts for self hosting via Render or Heroku. Use the instructions below to self-host this extension.
 
 ### Quick start
 
@@ -34,4 +34,15 @@ This extension is now also available as a Docker image.
 #### Deploy to Render
 
 Clone the repository, and then use the deploy button
+</br></br>
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy)
+
+### Use the Docker image
+
+```zsh
+docker pull andre347/keep-it-fresh-tableau-extension:v1.0
+```
+
+```zsh
+docker run -d -p 3000:3000 andre347/keep-it-fresh-tableau-extension
+```
