@@ -40,7 +40,7 @@ Clone the repository, and then use the deploy button
 ### Use the Docker image
 
 ```zsh
-docker pull andre347/keep-it-fresh-tableau-extension:v1.0
+docker pull andre347/keep-it-fresh-tableau-extension
 ```
 
 ```zsh
